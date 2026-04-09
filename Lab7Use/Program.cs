@@ -28,7 +28,7 @@ public class UsageOfNodes
             }
 
             Array.Resize(ref initialDataArray, count);
-            foreach(short item in initialDataArray)
+            foreach (short item in initialDataArray)
             {
                 list.addNext(item);
             }
@@ -37,7 +37,7 @@ public class UsageOfNodes
             Console.WriteLine("Введіть номер бажаної процедури\n 1 - знаходження елементу\n 2 - Пошук кратних елеметів\n 3 - Заміна елементів індекс яких є парним числом\n 4 - видалення елементів на непарних позиціях\n 5 - Додавання елементу у кінець списку\n 6 - Видалення елементу по індексу");
             if (int.TryParse(Console.ReadLine(), out int idOfProcedure) && idOfProcedure < 7 && idOfProcedure > 0)
             {
-            
+
             }
             else
             {
@@ -65,7 +65,8 @@ public class UsageOfNodes
                     RemoveElement(list);
                     break;
             }
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             Console.WriteLine("Помилка. Текст помилки:" + ex.Message);
         }
@@ -120,9 +121,6 @@ public class UsageOfNodes
             {
                 list.replaceEvenNodesToArgument(parsedReplaceArgument);
                 Console.WriteLine("Ваш список із заміною елементів з парних індексом на інше значення:" + string.Join(", ", list));
-            } else
-            {
-                Console.WriteLine("Значення не є в межах значень типу даних short");
             }
         }
     }
@@ -142,27 +140,18 @@ public class UsageOfNodes
             Console.WriteLine("Ваш список до додавання:" + string.Join(", ", list));
             list.addNext(data);
             Console.WriteLine("Ваш список після додавання:" + string.Join(", ", list));
-
-        }
-        else
-        {
-            Console.WriteLine("Некоректне значення елементу, елемент має бути в межах значень типу даних short");
         }
     }
 
     public static void RemoveElement(NodeList list)
     {
         Console.WriteLine("Введіть індекс елементу для видалення");
-        if (short.TryParse(Console.ReadLine(), out short index))
+        if (int.TryParse(Console.ReadLine(), out int index))
         {
             Console.WriteLine($"Ваш список до видалленя елементу з індексом {index}:" + string.Join(", ", list));
             list.RemoveElement(index);
             Console.WriteLine($"Ваш список після видаленняелементу з індексом {index}:" + string.Join(", ", list));
 
-        }
-        else
-        {
-            Console.WriteLine("Некоректне значення елементу, елемент має бути в межах значень типу даних short");
         }
     }
 }
